@@ -1,0 +1,122 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pc/PCSite.Master" AutoEventWireup="true"  Inherits="Web.m.app.user_findpwd" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+     
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="contact" style="padding: 1.5em 0px;">
+        <div class="container">
+                <div class="contact-top heading">
+                <h2>找回密码</h2>
+                <p>请输入用户名/手机号和密码进行校验登录！</p>
+            </div>
+            <div class="contact-bottom">
+                <div class="col-md-6 contact-left">
+                    <input type="text" placeholder="请输入您的手机号" id="txt_MID" runat="server" require-type="phone" require-msg="手机号码" />
+                    <input type="text" placeholder="请填写验证码" id="VerificationCode" runat="server" require-type="require" require-msg="验证码" style="width: 55%" />
+                    <input type="button" value="获取验证码" id="btnGetCode" onclick="sendCode(this)" style="width: 44%"  />
+                    <input id="txt_Password" type="password" runat="server" require-type="require" require-msg="输入新密码" placeholder="新密码" />
+                    <input id="txt_Password2" type="password" runat="server" require-type="require" require-msg="确认新密码" placeholder="确认新密码" />
+                    <input type="button" onclick="setupChange()" value="确认修改" />
+                       <input type="button" onclick="turnLogin()" value="重新登录" style="float: right;" />
+                </div>
+                <div class="col-md-6 contact-left">
+                    <div class="contact-top heading">
+                        <h2>找回密码</h2>
+                        <p>请输入手机号获取验证码进行手机号找回！</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentFooterHolder" runat="server">
+    <script type="text/javascript">
+
+        function turnLogin() {
+            window.location.href = "user_login";
+        }
+
+        var clock = '';
+        var nums = 120;
+        var btn;
+        function sendCode(thisBtn) {
+            var tel = $("#txt_MID").val().trim();
+            if (!tel.TryTel()) {
+                layerMsg("请输入正确的手机号");
+                return false;
+            }
+            //校验手机号
+            var info = {
+                type: 'sendTelCode',
+                code: tel,
+                sendtype: '2' //用户找回密码
+            };
+            var result = GetAjaxString(info);
+            if (result == "1") {
+                btn = thisBtn;
+                btn.disabled = true; //将按钮置为不可点击
+                btn.value = nums + '秒后可重新获取';
+                //发送验证码
+                layerMsg("验证码发送成功");
+                clock = setInterval(doLoop, 1000); //一秒执行一次
+            }
+            else if (result == "2") {
+                layerAlert("该手机号未注册");
+            }
+            else {
+                layerAlert("验证码发送失败，请重试");
+            }
+        }
+        function doLoop() {
+            nums--;
+            if (nums > 0) {
+                btn.value = nums + '秒后可重新获取';
+            } else {
+                clearInterval(clock); //清除js定时器
+                btn.disabled = false;
+                btn.value = '点击获取验证码';
+                nums = 10; //重置时间
+            }
+        }
+
+        function setupChange() {
+            if (!checkForm())
+                return false;
+            layerLoading();
+            var rek = 'user_findpwd';
+             //获取最后一个/和?之间的内容，就是请求的页面
+             $.ajax({
+                 type: 'post',
+                 url: rek + '?Action=ADD',
+                 data: $('#form1').serializeArray(),
+                 success: function (info) {
+                     closeLayerLoading();
+                     if (info == "0")
+                         layerAlert("密码重置失败，请重试");
+                     else if (info == "1") {  //提交成功
+                         layerAlert("密码重置成功，请牢记您的新密码！");
+                         setTimeout(function () {
+                             //自动跳转到“登录页面
+                             window.location = "user_login.aspx";
+                         }, 2000);
+                     }
+                     else if (info == "3")
+                         layerAlert("不存在该账号！");
+                     else if (info == "-3")
+                         layerAlert("请输入正确的验证码！");
+                     else if (info == "2")
+                         layerAlert("不存在该手机号码！");
+                     else
+                         layerAlert("密码找回失败，请重试");
+                 }
+             });
+         }
+
+    </script>
+</asp:Content>

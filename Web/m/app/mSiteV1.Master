@@ -1,0 +1,264 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mSiteV1.Master.cs" EnableTheming="false" Inherits="Web.m.app.mSiteV1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title><%=Service.CacheService.GlobleConfig.Contacter %></title>
+    <link href="/common/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/m/css/m.css" rel="stylesheet" />
+    <script src="/common/js/jquery.min.js"></script>
+    <script src="/common/js/bootstrap.min.js"></script>
+    <script src="/common/js/jquery.cookie.js"></script>
+    <script src="/common/layer.mobile-v2.0/layer_mobile/layer.js"></script>
+    <script src="/common/js/Verification.js"></script>
+    <script src="/common/js/common.js"></script>
+
+    <script type="text/javascript">
+        var isLogin = '<%=isLogin%>';
+        var isVip = '<%=IsVip%>';
+        var systemId = '<%=MethodHelper.ConfigHelper.GetAppSettings("SystemID")%>';
+        var cookieKey = '<%=MethodHelper.ConfigHelper.GetAppSettings("SystemID")%>';
+        var roleCode = '<%=mem!=null?mem.RoleCode:""%>';
+        $(function () {
+            var thisUrl = window.location.href;
+            if (thisUrl.indexOf("user_login") <= 0) { //登陆页面不需要缓存地址
+                localStorage.setItem("redirectUrl", window.location.href);
+            }
+
+            if (isLogin == "1") {
+                $("#sp_loginOut").show();
+                $("#sp_login").remove();
+                $(".no-login").remove();
+            }
+            else {
+                $(".is-login").remove();
+                $("#sp_login").show();
+                $("#sp_loginOut").hide();
+            }
+
+        });
+        function turnLoginOut() {
+            layer.open({
+                content: '确定要退出系统吗？'
+                              , btn: ['确定', '取消']
+                              , yes: function (index, layero) {
+                                  window.location = '/loginout';
+                              }, btn2: function (index, layero) {
+                                  //按钮【我再逛逛】的回调,跳转到首页
+                                  layer.close(index);
+                              }
+                              , cancel: function (index) {
+                                  //右上角关闭回调
+                                  layer.close(index);
+                              }
+            });
+        }
+        function upMember() {
+            layer.open({
+                content: '支付<%=Service.CacheService.GlobleConfig.Field1%>元/年可升级为VIP会员，可使用系统内所有功能！'
+                              , btn: ['立即升级', '我再逛逛']
+                              , yes: function (index, layero) {
+                                  //按钮【立即支付】的回调，跳转到支付页面
+                                  if (roleCode == "VIP") {
+                                      layerAlert("您已是缴费会员，无需再次缴费！");
+                                      layer.close(index);
+                                      return false;
+                                  }
+                                  window.location = '<%=Service.GlobleConfigService.GetWebConfig("WebSiteDomain").Value + "/AliPay/alipay"%>';
+                              }, btn2: function (index, layero) {
+                                  //按钮【我再逛逛】的回调,跳转到首页
+                                  layer.close(index);
+                              }
+                              , cancel: function (index) {
+                                  //右上角关闭回调
+                                  layer.close(index);
+                              }
+            });
+                      }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="navbar navbar-fixed-top header text-center nav-head-hewhitewhitewhite">
+            <a href="javascript:window.history.go(-1);" class="history" style="height: 15px; width: 15px; top: 9px;"></a>
+            <a href="/m/app/main_mine" class="history" style="left: 8%; background-image: none; color: white; width: 30px;">首页</a>
+            <h5 id="h5_title">记无忧
+                  <a href="/loginout" id="sp_loginOut" class="history" style="left: 89%; top: 10px; background-image: none; color: white; width: 30px;">退出</a>
+                <a href="/m/app/user_change" id="sp_login" class="history" style="left: 89%; top: 10px; background-image: none; color: white; width: 30px;">登录</a>
+            </h5>
+        </div>
+        <div class="nav-head-height"></div>
+
+        <div class="row">
+            <div class=" col-xs-12 col-sm-12 ">
+                <form id="form1">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" ClientIDMode="Static">
+                    </asp:ContentPlaceHolder>
+                </form>
+
+            </div>
+
+
+            <nav id="nav_footer" class="navbar  navbar-fixed-bottom bg-wh nav-foot-height hidden-lg hidden-md hidden-sm hidden" role="navigation">
+           	 <div class="col-sm-4 col-xs-4 text-center nav-b">
+					<a  href="/website/index.html"    class="btn-block"><img src="../images/home1.png" id="nav_index1" data-index="1"  class="nav_index_img" style="width:20%"><br><span class="nav-lable">网站首页</span></a>
+				</div>
+				<div class="col-sm-4 col-xs-4 text-center nav-b">
+			<a href="javascript:void(0)"  onclick="indexNavTurnPage('main_mine')"  class="btn-block"><img src="../images/home4.png" id="nav_index2" data-index="2"   class="nav_index_img" style="width:20%"><br><span class="nav-lable">个人中心</span></a>
+				</div>
+
+            <div class="col-sm-4 col-xs-4 text-center nav-b">
+					<a  href="javascript:void(0)"  onclick="indexNavTurnPage('guide_content?code=commonquestion')"  class="btn-block"><img src="../images/home3.png" id="nav_index3"  data-index="3"  class="nav_index_img" style="width:20%"><br><span class="nav-lable">常见问题</span></a>
+				</div>
+            </nav>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="ContentFooterHolder" runat="server" ClientIDMode="Static">
+    </asp:ContentPlaceHolder>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+
+    <script type="text/javascript">
+        //禁用/启用微信分享功能
+        function showOptionMenu() {
+            WeixinJSBridge.call('showOptionMenu');
+            setWeixinShare();
+        }
+        function hideOptionMenu() {
+            WeixinJSBridge.call('hideOptionMenu');
+        }
+
+        //if (isLogin == "1") {
+        //    //显示分享
+        //    if (typeof WeixinJSBridge == "undefined") {
+        //        if (document.addEventListener) {
+        //            document.addEventListener('WeixinJSBridgeReady', showOptionMenu, false);
+        //        } else if (document.attachEvent) {
+        //            document.attachEvent('WeixinJSBridgeReady', showOptionMenu);
+        //            document.attachEvent('onWeixinJSBridgeReady', showOptionMenu);
+        //        }
+        //    } else {
+        //        showOptionMenu();
+        //    }
+        //}
+        //else {
+        //    //禁用分享
+        //    if (typeof WeixinJSBridge == "undefined") {
+        //        if (document.addEventListener) {
+        //            document.addEventListener('WeixinJSBridgeReady', hideOptionMenu, false);
+        //        } else if (document.attachEvent) {
+        //            document.attachEvent('WeixinJSBridgeReady', hideOptionMenu);
+        //            document.attachEvent('onWeixinJSBridgeReady', hideOptionMenu);
+        //        }
+        //    } else {
+        //        hideOptionMenu();
+        //    }
+        //}
+
+        function setWeixinShare() {
+            var strUrl = location.href.split('#')[0];
+            var userInfo = {
+                type: 'GetWeixinShareData',
+                str: strUrl
+            };
+            var result = GetAjaxString(userInfo);
+            if (result != "") {
+                //layerMsg(result);
+                var data = JSON.parse(result);
+                wxconifg(data);
+            }
+            else {
+                //layerMsg("分享失败");
+                //layerAlert("分享失败");
+            }
+        }
+
+
+        //$.ajax({
+        //    type: "Post",
+        //    url: "/ajax?type=",
+        //    //方法传参的写法一定要对，strUrl为形参的名字    
+        //    data: "{'str':'" + strUrl + "'}",
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "json",
+        //    success: function (data) {
+        //        //返回的数据用data.d获取内容    
+        //        //$("#wx-share-sign").val(data.d.signature);
+        //        wxconifg(data.d);
+        //    },
+        //    error: function (err) {
+        //        alert('55');
+        //    }
+        //});
+        function wxconifg(WXDate) {
+            wx.config({
+                debug: false,
+                appId: 'wx0ab20b039078009a',
+                timestamp: WXDate.timestamp,
+                nonceStr: WXDate.nonceStr,
+                signature: WXDate.signature,
+                jsApiList: ["checkJsApi", "onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareQZone"]
+            });
+            wx.ready(function () {
+                ////测试分享之前校验
+                //layerAlert("请您登录");
+                //return false;
+
+                wx.onMenuShareAppMessage({
+                    title: '记无忧',
+                    desc: '测试说明，测试说明，测试说明，测试说明，测试说明，测试说明',
+                    link: 'http://jwy.0755wgwh.com/m/app/main_mine',
+                    imgUrl: 'http://jwy.0755wgwh.com/m/images/main_index.png',
+                    trigger: function (res) {
+                        //layerAlert("请您登录");
+                        //return false;
+                    },
+                    success: function (res) {
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+                //分享到朋友圈
+                wx.onMenuShareTimeline({
+                    title: '记无忧',
+                    desc: '测试说明，测试说明，测试说明，测试说明，测试说明，测试说明',
+                    link: 'http://jwy.0755wgwh.com/m/app/main_mine',
+                    imgUrl: 'http://jwy.0755wgwh.com/m/images/main_index.png',
+                    type: 'link',
+                    dataUrl: strUrl,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+            });
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        function indexNavTurnPage(page) {
+            var requestUrl = '<%=Request.RawUrl%>';
+            if (requestUrl.indexOf(page) <= 0) {
+                window.location.href = page;
+            }
+        }
+    </script>
+</body>
+</html>

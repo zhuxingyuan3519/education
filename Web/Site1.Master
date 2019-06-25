@@ -1,0 +1,332 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" EnableTheming="false" Inherits="Web.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <title><%=Service.CacheService.GlobleConfig.Contacter %></title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/layer-v2.2/layer/layer.js"></script>
+      <script src="js/Verification.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <style type="text/css">
+        .ui-select {
+            width: 100px;
+        }
+    </style>
+    <!-- HTML5 Support for IE -->
+    <!--[if lt IE 9]>
+  <script src="js/html5shim.js"></script>
+  <![endif]-->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon/favicon.png" />
+
+    <script type="text/javascript">
+        function ddlUserChange(obj) {
+            var thisVal = $(obj).val();
+            if (thisVal == "2") {
+                window.location = "/changepwd";
+            }
+            if (thisVal == "3") {
+                window.location = "/loginout";
+            }
+            if (thisVal == "4") {
+                window.location = "/myinfo";
+            }
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-top">
+                    <div class=" header-top-right" style="width: 100%">
+                        <p style="float: right">
+                             <% if (MethodHelper.ConfigHelper.GetAppSettings("SystemID") != "kgj01"){ %>
+                                 <a href="download" style="color: white; text-decoration: none; float: left">下载APP &emsp;</a> 
+                              <%} %>
+                             <a href="/admin/login" runat="server" id="A1" style="color: white; text-decoration: none; float: left">管理员登录&nbsp;| &nbsp;</a> <a href="regist" runat="server" id="logininfo" style="color: white; text-decoration: none">注册&nbsp;|&nbsp;</a><a href="login" runat="server" id="logininfo2" style="color: white; text-decoration: none">登录</a>
+                            <select onchange="ddlUserChange(this)" class="drop-down drop-down-in ui-select left" id="afterlogininfo" runat="server">
+                                <option value="1"></option>
+                                    <option value="4">个人信息</option>
+                                <option value="2">修改密码</option>
+                                <option value="3">安全退出</option>
+                            </select>
+
+                        </p>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="header_bottom">
+            <div class="container">
+                <div class="header-bottom-top" style="padding:0px">
+                    <div class=" logo">
+                        <a href="index" style="font-size: 20px; font-weight: bolder; text-decoration: none">
+                            <img src="<%=Service.CacheService.GlobleConfig.Field4 %>" style="width:30px" />
+                            <%=Service.CacheService.GlobleConfig.Contacter %></a>
+                    </div>
+
+                    <div class="top-nav">
+                        <span class="menu">
+                            <img src="images/menu.png" alt="">
+                        </span>
+
+                        <ul>
+                            <li class="active"><a href="index">首页</a></li>
+                            <li><a href="archivelist">卡片录入</a></li>
+                            <li><a href="planlist">卡片规划</a></li>
+                            <li><a href="posmarket">POS超市</a></li>
+                            <li class="hidden"><a href="coming">重要提醒</a></li>
+                            <li><a href="everydayplan">每日计划</a></li>
+                            <li class=""><a href="credit">信用卡中心</a></li>
+                            <li class=""><a href="mylink">分享推广</a></li>
+                            <li class=""><a href="mttj">推广业绩</a></li>
+                           <%-- <li class=""><a href="javascript:void(0)" onclick="showCollection()">快速收藏</a></li>--%>
+                            <li class=""><a href="learning">新手指南</a></li>
+                            <li class=""><a href="javascript:void(0)" onclick="upMember()">会员升级</a></li>
+                             <li class=""><a  href="m/app/main_index.aspx">新版体验</a></li>
+                        </ul>
+                        <script>
+                            $("span.menu").click(function () {
+                                $(".top-nav ul").slideToggle(500, function () {
+                                });
+                            });
+                        </script>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="form1">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" ClientIDMode="Static">
+        </asp:ContentPlaceHolder>
+    </form>
+    <div class="footer">
+        <div class="container">
+            <div class="footer-bottom-at">
+                <div class="col-md-12 footer-grid-in">
+                    <p class="footer-class">Copyright © 2016.<%=Service.CacheService.GlobleConfig.Address %> </p>
+                    <p class="footer-class">
+                        <span onclick="showTel()">电话：<%=Service.CacheService.GlobleConfig.Phone %></span>&nbsp;&nbsp;
+                      <a id="showQQMobile" href="mqqwpa://im/chat?chat_type=wpa&uin=<%=Service.CacheService.GlobleConfig.QQ %>&version=1&src_type=web&web_src=bjhuli.com" style="color:white">QQ：<%=Service.CacheService.GlobleConfig.QQ %></a>
+                             <span onclick="showQQ()" id="showQQPC">QQ：<%=Service.CacheService.GlobleConfig.QQ %></span>
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <ul id="divShowTel" style="display: none">
+            <li class="span1_of_1 left" style="list-style-type: none">
+                <div class="col-md-12" style="padding: 10px; color: black">
+                    <%=Service.CacheService.GlobleConfig.Phone %>&emsp;
+                                                    <a href="tel:<%=Service.CacheService.GlobleConfig.Phone %>" id="aBtnTel" class="btn btn-success btn-sm">拨号</a>
+                    <a href="javascript:void(0)" id="aCloseTel" class="btn btn-danger btn-sm" onclick="closeShowTel()">取消</a>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+         <ul id="divShowCollection" style="display: none">
+            <li class="span1_of_1 left" style="list-style-type: none">
+                <div class="col-md-12" style="color:black;padding:10px;">
+                    为了方便您以后可以快速找到我们，请选择对应的手机机型进行收藏。
+                </div>
+                <div class="col-md-12" style="padding: 10px;">
+                    <a href="collection?c=1" class="btn btn-success">苹果手机</a>
+                    <a href="collection?c=2" class="btn btn-danger">安卓手机</a>
+                    <a href="collection?c=3" class="btn btn-info ">其他方式</a>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+        <!-- 代码 开始 -->
+        <div id='cs_box' style="display: none">
+            <span class='cs_close'>x</span>
+            <div class='cs_img'></div>
+            <div class='cs_btn'></div>
+        </div>
+        <!-- 代码 结束 -->
+    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" ClientIDMode="Static">
+    </asp:ContentPlaceHolder>
+     <script src="/js/MessageClientService.js"></script>
+    <link href="css/top.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/top.js"></script>
+    <a href="javascript:gotoTop();" class="totop" title="返回顶部"></a>
+   
+    <script src="/js/kefu/sucaijiayuan.js"></script>
+    <script type="text/javascript">
+        myEvent(window, 'load', function () {
+            cs_box.set({
+                //img_path: 'images/sucaijiayuan.jpg', //设置图片路径
+                qq: '<%=Service.CacheService.GlobleConfig.QQ %>', //设置QQ号码
+            });
+        });
+        function showQQ() {
+            $(".cs_btn").click();
+        }
+
+        function upMember() {
+            layer.open({
+                content: '支付<%=Service.CacheService.GlobleConfig.Field1%>元/年可升级为VIP会员，可使用系统内所有功能！'
+                              , btn: ['立即升级', '我再逛逛']
+                              , yes: function (index, layero) {
+                                  //按钮【立即支付】的回调，跳转到支付页面
+                                  var roleCode = '<%=mem!=null?mem.RoleCode:""%>';
+                                  if (roleCode == "VIP") {
+                                      layer.alert("您已是缴费会员，无需再次缴费！");
+                                      layer.close(index);
+                                      return false;
+                                  }
+                                  window.location = '<%=Service.GlobleConfigService.GetWebConfig("WebSiteDomain").Value + "/AliPay/alipay"%>';
+                              }, btn2: function (index, layero) {
+                                  //按钮【我再逛逛】的回调,跳转到首页
+                                  layer.close(index);
+                              }
+                              , cancel: function (index) {
+                                  //右上角关闭回调
+                                  layer.close(index);
+                              }
+            });
+                          }
+
+    </script>
+
+    <script type="text/javascript">
+        var isLogin = '<%=isLogin%>';
+        $(function () {
+            if (isMobile()) {
+                $("#showQQPC").hide();
+            }
+            else {
+                $("#showQQMobile").hide();
+            }
+           if (isLogin == '1') {
+               //登录之后开始轮询消息
+               checkNewMessageNotice();
+           }
+       });
+
+       var layIndex;
+       function showTel() {
+           var offsetleft = '';
+           if (isMobile())
+               offsetleft = '50px';
+           layIndex = layer.open({
+               type: 1,
+               shade: [0.8, '#393D49'],
+               offset: ['', offsetleft],
+               title: ['咨询电话', 'font-size:14px;background:#2aaacb'],
+               content: $('#divShowTel'), //捕获的元素
+               cancel: function (index) {
+                   layer.close(index);
+               }
+           });
+       }
+       function closeShowTel() {
+           layer.close(layIndex);
+       }
+
+       var layindexof;
+       var layiframe = '';
+        //意见反馈
+       function setAdd() {
+           if (isLogin != '1') {
+               window.location = "login";
+               return false;
+           }
+           var offsetwidth = $(window).width();
+           var offsetheight = $(window).height();
+           if (isMobile()) {
+               offsetwidth = offsetwidth - 50 + 'px';
+               offsetheight = offsetheight - 120 + 'px';
+
+           }
+           else {
+               offsetwidth = ($(window).width() - 200) + 'px';
+               offsetheight = ($(window).height() - 100) + 'px'
+           }
+           layer.close(layindexof);
+           layiframe = layer.open({
+               type: 2,
+               title: '意见反馈',
+               shadeClose: true,
+               shade: 0.8,
+               maxmin: true, //开启最大化最小化按钮
+               offset: '40px',
+               area: [offsetwidth, offsetheight],
+               content: 'Notice.aspx?mty=1&?rand=' + Math.random(),
+               btn: ['提交']
+            , yes: function (index) {
+                //弹出iframe，显示详细的
+                var responsemsg = parent.window['layui-layer-iframe' + index].updatenongjiinfo(); //调用iframe层方法 
+                if ($.trim(responsemsg) == '') {
+                    layer.alert("意见内容不能为空！");
+                    return;
+                }
+                var responseInfo = {
+                    type: 'SendMessage',
+                    reMsg: responsemsg
+                };
+                var result = GetAjaxString(responseInfo);
+                if (result == "1") {
+                    layer.alert("提交成功，我们将尽快为您答复！");
+                    layer.close(index);
+                    layiframe = '';
+                }
+                else
+                    layer.alert("提交失败，请重试！");
+            }
+             , cancel: function (index) {
+                 layer.close(index);
+                 layiframe = '';
+             }
+           });
+       }
+
+       function showCollection() {
+           var offsetleft = '';
+           if (isMobile())
+               offsetleft = '20px';
+           layer.open({
+               type: 1,
+               shade: [0.8, '#393D49'],
+               offset: ['', offsetleft],
+               title: ['选择您的手机机型', 'font-size:14px;background:#2aaacb'],
+               content: $('#divShowCollection'), //捕获的元素
+               cancel: function (index) {
+                   layer.close(index);
+               }
+           });
+       }
+    </script>
+</body>
+</html>

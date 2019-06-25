@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14109FC3-779F-4A7F-8112-D7C8CDD075B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CM_AgingLimit.cs" />
+    <Compile Include="CM_Archives.cs" />
+    <Compile Include="CM_BuyPOS.cs" />
+    <Compile Include="CM_ChangeMoney.cs" />
+    <Compile Include="CM_Company.cs" />
+    <Compile Include="CM_CompanyPointCost.cs" />
+    <Compile Include="CM_CompanyProduct.cs" />
+    <Compile Include="CM_Contact.cs" />
+    <Compile Include="CM_Custom.cs" />
+    <Compile Include="EN_Course.cs" />
+    <Compile Include="M_WXUserHelpInfo.cs" />
+    <Compile Include="M_WX_VS_User.cs" />
+    <Compile Include="M_WXUserInfo.cs" />
+    <Compile Include="M_Rank.cs" />
+    <Compile Include="TD_PrizeDetail.cs" />
+    <Compile Include="TD_ChargeList.cs" />
+    <Compile Include="T_CodingMemory.cs" />
+    <Compile Include="TD_SHMoney_Dict.cs" />
+    <Compile Include="EN_SignUp.cs" />
+    <Compile Include="SH_MemberBank.cs" />
+    <Compile Include="EN_Video.cs" />
+    <Compile Include="Sys_StandardArea.cs" />
+    <Compile Include="Sys_CreditMarket.cs" />
+    <Compile Include="Sys_WebConfig.cs" />
+    <Compile Include="Sys_SendCode.cs" />
+    <Compile Include="SH_HirePurchase.cs" />
+    <Compile Include="CM_Dict.cs" />
+    <Compile Include="CM_ExpenseMoneyLog.cs" />
+    <Compile Include="CM_FHLog.cs" />
+    <Compile Include="CM_FileInfo.cs" />
+    <Compile Include="CM_Induty.cs" />
+    <Compile Include="CM_Log.cs" />
+    <Compile Include="CM_Message.cs" />
+    <Compile Include="CM_PayInfo.cs" />
+    <Compile Include="CM_PayLog.cs" />
+    <Compile Include="CM_PlanDetail.cs" />
+    <Compile Include="CM_PlanHeader.cs" />
+    <Compile Include="CM_PlanRateConfig.cs" />
+    <Compile Include="CM_Points.cs" />
+    <Compile Include="CM_PointsInLog.cs" />
+    <Compile Include="CM_POSDevices.cs" />
+    <Compile Include="CM_PosExpense.cs" />
+    <Compile Include="CM_Product.cs" />
+    <Compile Include="CM_SHMoney.cs" />
+    <Compile Include="CM_SJConfig.cs" />
+    <Compile Include="CM_StoreMoneyLog.cs" />
+    <Compile Include="CM_Template.cs" />
+    <Compile Include="ConfigDictionary.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Contents.cs" />
+    <Compile Include="DB_EveryDayRemind.cs" />
+    <Compile Include="DB_Log.cs" />
+    <Compile Include="DB_Message_Model.cs" />
+    <Compile Include="DB_ResponseMessage_Model.cs" />
+    <Compile Include="Member.cs" />
+    <Compile Include="Notice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reward.cs" />
+    <Compile Include="RolePowers.cs" />
+    <Compile Include="Roles.cs" />
+    <Compile Include="SH_HirePurchaseDetail.cs" />
+    <Compile Include="SH_PrizePool.cs" />
+    <Compile Include="SH_PrizePoolInLog.cs" />
+    <Compile Include="SH_RedBagHeaderLog.cs" />
+    <Compile Include="Sys_Address.cs" />
+    <Compile Include="CM_POSBank.cs" />
+    <Compile Include="Sys_BankInfo.cs" />
+    <Compile Include="SH_RedBagConfig.cs" />
+    <Compile Include="SH_RedBagDetailLog.cs" />
+    <Compile Include="Sys_GlobleConfig.cs" />
+    <Compile Include="Sys_SQ_Answer.cs" />
+    <Compile Include="Sys_SecurityQuestion.cs" />
+    <Compile Include="Sys_Menu.cs" />
+    <Compile Include="Sys_Privage.cs" />
+    <Compile Include="Sys_Role.cs" />
+    <Compile Include="Sys_RolePower.cs" />
+    <Compile Include="TD_FHLog.cs" />
+    <Compile Include="TD_PayLog.cs" />
+    <Compile Include="TD_SHMoney.cs" />
+    <Compile Include="TD_TXLog.cs" />
+    <Compile Include="T_EvaluationDetail.cs" />
+    <Compile Include="T_EvaluationHeader.cs" />
+    <Compile Include="T_VersionVsWords.cs" />
+    <Compile Include="T_EvaluationPaper.cs" />
+    <Compile Include="T_Words.cs" />
+    <Compile Include="T_TrainDetail.cs" />
+    <Compile Include="T_TrainHeader.cs" />
+    <Compile Include="T_CodingWord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonWeb\code\DBUtility\DBUtility.csproj">
+      <Project>{9fc8c500-3117-4942-bc0e-cf734e202716}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CommonWeb\code\MethodHelper\MethodHelper.csproj">
+      <Project>{f58ceb08-ded4-4076-ab70-0b635700728c}</Project>
+      <Name>MethodHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

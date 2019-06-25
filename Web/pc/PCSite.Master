@@ -1,0 +1,171 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PCSite.master.cs" Inherits="Web.pc.PCSite" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%=Service.CacheService.GlobleConfig.Contacter %></title>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="/website/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+     <link href="/m/css/pc.css" rel="stylesheet" />
+    <script src="/website/js/jquery.min.js"></script>
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="/website/js/move-top.js"></script>
+    <script type="text/javascript" src="/website/js/easing.js"></script>
+    <style type="text/css">
+    
+    </style>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+
+        var isLogin = '<%=isLogin%>';
+        var isVip = '<%=IsVip%>';
+        var systemId = '<%=MethodHelper.ConfigHelper.GetAppSettings("SystemID")%>';
+        var cookieKey = '<%=MethodHelper.ConfigHelper.GetAppSettings("SystemID")%>';
+        var roleCode = '<%=mem!=null?mem.RoleCode:""%>';
+        $(function () {
+            var thisUrl = window.location.href;
+            if (thisUrl.indexOf("user_login") <= 0) { //登陆页面不需要缓存地址
+                localStorage.setItem("redirectUrl", window.location.href);
+            }
+
+            if (isLogin == "1") {
+                $("#li_loginout").show();
+                $(".no-login").remove();
+            }
+            else {
+                $(".is-login").remove();
+                $("#li_loginout").hide();
+            }
+
+        });
+        function upMember() {
+            layer.open({
+                content: '支付<%=Service.CacheService.GlobleConfig.Field1%>元/年可升级为VIP会员，可使用系统内所有功能！'
+                              , btn: ['立即升级', '我再逛逛']
+                              , yes: function (index, layero) {
+                                  //按钮【立即支付】的回调，跳转到支付页面
+                                  if (roleCode == "VIP") {
+                                      layerAlert("您已是缴费会员，无需再次缴费！");
+                                      layer.close(index);
+                                      return false;
+                                  }
+                                  window.location = '<%=Service.GlobleConfigService.GetWebConfig("WebSiteDomain").Value + "/AliPay/alipay"%>';
+                              }, btn2: function (index, layero) {
+                                  //按钮【我再逛逛】的回调,跳转到首页
+                                  layer.close(index);
+                              }
+                              , cancel: function (index) {
+                                  //右上角关闭回调
+                                  layer.close(index);
+                              }
+            });
+                      }
+    </script>
+    <!--start-smoth-scrolling-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+  
+        <!--start-header-->
+        <div class="header" id="home">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://www.d1peixun.com/">
+                            <img src="/website/images/logo.png" alt="" /></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="main_mine" class="hvr-bounce-to-top">个人中心</a></li>
+                            <li><a href="ext_link" class="hvr-bounce-to-top">分享推广</a></li>
+                            <li><a href="ext_list" class="hvr-bounce-to-top">业绩查询</a></li>
+                               <li><a href="tx_apply" class="hvr-bounce-to-top">我要提现</a></li>
+                            <li><a target="-blank" href="guide_content?code=commonquestion" class="hvr-bounce-to-top">常见问题</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+        <!--end-header-->
+   
+        <form id="form1">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" ClientIDMode="Static">
+            </asp:ContentPlaceHolder>
+        </form>
+      
+        <!--start-footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-main">
+				<div class="col-md-4 footer-left">
+					<span class="glyphicon glyphicon-map-marker map-marker" aria-hidden="true"></span>
+					<p><span>地址： <%=Service.CacheService.GlobleConfig.Address %></span> </p><br />
+                    	<p><span>+<%=Service.CacheService.GlobleConfig.Phone %>  </span></p> 
+				</div>
+				<div class="col-md-4 footer-left">
+					<span class="glyphicon glyphicon-email map-marker" aria-hidden="true"></span>
+                    <p><span>QQ：<%=Service.CacheService.GlobleConfig.QQ %> </span> </p><br /> 
+                    <p><span>Email：<%=Service.CacheService.GlobleConfig.Email %> </span> </p>
+				</div>
+				<div class="col-md-4 footer-left">
+					<p class="footer-class">Copyright &copy; 2017.<%=Service.CacheService.GlobleConfig.Contacter %></p>
+					<ul>
+						<li><a href="#"><span class="fb"></span></a></li>
+						<li><a href="#"><span class="twit"></span></a></li>
+						<li><a href="#"><span class="rss"></span></a></li>
+						<li><a href="#"><span class="ggl"></span></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		        /*
+                var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear' 
+                };
+                */
+
+		        $().UItoTop({ easingType: 'easeOutQuart' });
+
+		    });
+								</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>
+	<!--end-footer-->
+   
+     <asp:ContentPlaceHolder ID="ContentFooterHolder" runat="server" ClientIDMode="Static">
+    </asp:ContentPlaceHolder>
+    <script src="/common/js/bootstrap.min.js"></script>
+    <script src="/common/js/jquery.cookie.js"></script>
+    <script src="/common/layer.mobile-v2.0/layer_mobile/layer.js"></script>
+    <script src="/common/js/Verification.js"></script>
+    <script src="/common/js/common.js"></script>
+
+</body>
+</html>

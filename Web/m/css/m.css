@@ -1,0 +1,545 @@
+* {
+    font-family: "微软雅黑";
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.header {
+    background-color: #292929 ;
+    line-height: 30px;
+    padding-top: 5px;
+    color: #ffffff ;min-height:30px;
+}
+
+
+.bg-wh {
+    background-color: #fff;
+    padding-left: 4px;
+}
+
+h5 {
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+    h5 b {
+        line-height: 30px;
+        color: #00B5FF;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+.border-bot {
+    background-color: #ffffff;
+    border-bottom: 1px solid #d1d1d1;
+    border-top: 1px solid #d1d1d1;
+    height: 80px;
+}
+
+.border-r {
+   /*height: 100px;*/
+    display: block;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+    .border-r a {
+              padding-top: 22px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #696969;
+    padding-bottom: 15px;
+    }
+
+        .border-r a span {
+            line-height: 30px;
+        }
+
+.text-center {
+    margin: 0;
+    
+}
+
+.text-left {
+    margin: 0;
+    padding: 5px;
+}
+
+.marg {
+    margin-top: 10px;
+}
+
+.margs {
+    margin-top: 10px;
+}
+
+.nav-b {
+    background: #FFFFFF;
+    padding-top: 5px;
+    border-top: 1px solid #0F8051;
+}
+
+    .nav-b a {
+        text-decoration: none;
+    }
+
+        .nav-b a span {
+            color: #696969;
+        }
+
+.space {
+    height: 50px;
+}
+
+.copy {
+    margin-top: 30px;
+}
+
+    .copy h5 a {
+        text-decoration: none;
+    }
+
+/*登陆页面样式****************************************/
+.log {
+    margin-top: 30%;
+    margin-bottom: 10%;
+}
+
+.logn-space {
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+    .logn-space input {
+        height: 40px;
+        line-height: 40px;
+        background-color: #ffffff;
+    }
+
+        .logn-space input.gree {
+            height: 40px;
+            line-height: 40px;
+            color: #FFFFFF;
+            background-color: #00B5FF;
+            margin-top: 15%;
+        }
+
+.gree {
+    height: 40px;
+    line-height: 40px;
+    color: #FFFFFF;
+    padding: 0 !important;
+    background-color: #00B5FF;
+}
+
+.btn:hover {
+    color: #ffffff;
+}
+
+.rem {
+    margin-top: 10px;
+    height: 30px;
+}
+
+    .rem span {
+        line-height: 30px;
+        float: left;
+    }
+
+    .rem input {
+        height: 20px;
+        width: 15px;
+        margin-left: 10px;
+        margin-top: 5px;
+        float: left;
+    }
+/*卡片列表样式*************************/
+.list-border {
+    background-color: #ffffff;
+    border-bottom: 1px solid #d1d1d1;
+    border-top: 1px solid #d1d1d1;
+    padding: 5px 0 5px 0 !important;
+}
+/*卡片新增样式***********************/
+.list-card {
+    /*margin-top: 10px;*/
+}
+
+    .list-card span {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+    }
+
+.mars {
+    margin-top: 18px;
+    margin-right: 0px !important;
+    padding-right: 0px !important;
+}
+
+.list-card select {
+    height: 40px;
+}
+
+.list-card input {
+    height: 40px;
+    margin-top: 0px;
+}
+
+.pad {
+    padding-top: 15px;
+}
+
+.radio input {
+    width: 20px;
+}
+
+.addnew {
+    color: #FFFFFF;
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    width: 160px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    z-index: 999;
+}
+/*分享推广样式******************************/
+.content {
+    width: 96%;
+    margin-left: 2%;
+    float: left;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+    .content span {
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        float: left;
+        display: block;
+        background-color: #0faa59;
+        color: #ffffff;
+    }
+
+    .content p {
+        float: left;
+        width: 100%;
+        display: block;
+        line-height: 24px;
+        color: #656565;
+    }
+
+        .content p button {
+            width: 100px;
+        }
+
+    .content img {
+        border: 1px solid #0faa59;
+        text-align: center;
+    }
+/*pos超市***********************/
+.img-ad {
+    width: 48%;
+    float: left;
+    margin-left: 2%;
+}
+
+.margm {
+    margin-top: 30px;
+}
+
+    .margm a img {
+        margin-left: 10%;
+    }
+
+.btn-two {
+    margin-top: 15%;
+}
+
+.txt i {
+    padding-left: 10px;
+}
+
+.txt h5 {
+    text-indent: 2em;
+    padding: 0 30px 0 30px;
+}
+/*模态窗********************************/
+.modal-body {
+    /*height: 200px;*/
+}
+
+.modal-dialog {
+    /*height: 260px;*/
+    margin-top: 25%;
+}
+
+.list-group li {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 0 0 0px;
+}
+
+.list-group-li-pater {
+    margin-top: 10px;
+}
+
+.list-group li a {
+    width: 98%;
+    display: inline-block;
+    color: #696969;
+    background: url(../images/more.png) right no-repeat;
+    background-size: 7%;
+}
+
+    .list-group li a img {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 8%;
+    }
+
+.personer {
+    padding-top: 30px;
+    height: 150px;
+    margin: -15px;
+    background-image: url(../images/pensoner-bg.jpg);
+}
+
+.input-group-addon {
+    background-color: #FFFFFF;
+    border-right: none;
+}
+
+.nb {
+    border-left: none;
+}
+
+.btn-inner {
+    height: 40px;
+    width: 90px;
+    margin: 30px 0 0 20px;
+}
+
+.btn-foot {
+    margin: 0 0 0 20px;
+}
+
+.talk {
+    position: fixed;
+    top: 2px;
+    right: 0px;
+    height: 30px;
+    width: 28px;
+    border: none;
+    background: url(../images/talk.png) no-repeat;
+    background-size: contain;
+    text-align: center;
+    color: red;
+    background-size: 22px;
+    top: 5px;
+}
+
+.history {
+    position: fixed;
+    left: 0px;
+    height: 30px;
+    width: 30px;
+    /* border: none; */
+    background: url(../images/left_back.png) no-repeat;
+    background-size: contain;
+    text-align: center;
+    /* color: red; */
+    /* background-size: 22px; */
+    top: 3px;
+}
+
+.redbad {
+    background-color: #D43F3A !important;
+    padding: 3px;
+    font-size: 10px !important;
+}
+
+.panel-heading {
+    background-color: #ffffff !important;
+}
+
+    .panel-heading a {
+        color: #000000;
+        line-height: 30px;
+        text-decoration: none;
+    }
+
+.talk-back {
+    margin-top: 10px;
+}
+
+    .talk-back input {
+        width: 75%;
+        height: 30px;
+        border-radius: 3px;
+    }
+
+    .talk-back button {
+        width: 15%;
+        height: 30px;
+        padding: 0;
+        margin-top: -5px;
+        font-size: 14px;
+    }
+
+.list_add_new {
+    border: 1px solid #d1d1d1;
+    border-radius: 400px;
+}
+
+    .list_add_new a {
+        font-size: 20px;
+        text-decoration: none;
+        padding-left: 30%;
+    }
+
+        .list_add_new a img {
+            width: 38px;
+        }
+
+.nav-foot-height {
+    height: 50px;
+    min-height: 50px;
+    padding-top: 1px;
+}
+
+.nav-head-height {
+    height: 33px;
+    min-height: 33px;
+    padding-top: 1px;
+}
+
+.nav-lable {
+    font-size: 12px;
+}
+
+.space-top {
+    height: 35px;
+}
+
+.itemlist {
+    position: relative;
+}
+
+.itemlist_delete {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #d31b1b;
+    padding-top: 1%;
+    padding-right: 1px;
+}
+
+.itemlist_delete_btn {
+    color: white;
+    margin: 0px;
+    float: right;
+    border: none;
+    padding: 0.5em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.div_in_list {
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+    .div_in_list img {
+        height: 50px;
+        width: 100%;
+    }
+
+    .div_in_list span {
+        padding-top: 0px;
+    }
+
+.addlabel {
+    margin-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 0px;
+}
+
+.addvalue {
+    margin-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 10px;
+}
+
+.padding-left-right-0 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.imgshowtitle {
+    width: 20%;
+    display: inline;
+}
+
+.nav_index_img {
+    width: 30%;
+}
+
+@media (min-width: 768px) and (min-width: 992px) and (min-width: 1200px) {
+    .border-r {
+        height: 100%;
+    }
+
+    .container-fluid {
+        width: 80%;
+        padding-top: 5%;
+    }
+
+    .imgshowtitle {
+        width: 10%;
+    }
+
+    .screen1 {
+        padding-top: 8.5%;
+    }
+
+    .screen2 {
+        padding-top: 10%;
+    }
+
+    .txcardscreen {
+        width: 60%;
+    }
+
+    .personer {
+        margin: 5px;
+    }
+
+    .bg-wh {
+        margin-top: 50px;
+    }
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #40c345;
+    border-color: #40c345;
+}
+.border-none{border:none;}

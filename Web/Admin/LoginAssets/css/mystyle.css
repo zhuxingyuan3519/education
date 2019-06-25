@@ -1,0 +1,38 @@
+.top{
+	    padding-bottom: 10px;
+}
+
+.bg-logn {
+	/*background:url(../img/logn-bg.png) no-repeat;
+	background-size: 100% 100%;
+	height:577px;*/
+}
+.bg-card {
+	/*background: url(../img/loginleft.png) no-repeat;
+	background-size: cover 100%;
+	height: 577px;*/
+	background-color: #d4d9dd;
+}
+.bor-circle{
+	/*background-color: #ffffff;*/
+	border-radius: 10px;
+}
+.gray {
+	background-color:#f0f0f0;
+	box-shadow: 10px 10px 10px rgba(0 ,0,0, 0.5);
+}
+.marg {
+	top: 50px;
+}
+.marlg{
+	font-size: 24px;
+	font-weight: bold;
+}
+.marlg {
+	margin-top: 45px;
+}
+.bold {
+	font-weight: bold;
+	font-family: "微软雅黑";
+	color:#666666 ;
+}

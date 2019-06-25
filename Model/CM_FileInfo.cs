@@ -1,0 +1,32 @@
+﻿using System; 
+using System.Text;
+using System.Collections.Generic; 
+using System.Data;
+using DBUtility;
+namespace Model{
+	 	//CM_FileInfo
+		 [EnitityMapping(TableName = "CM_FileInfo")]
+	public class CM_FileInfo
+	{
+   		     
+	  
+		   [EnitityMapping(ColumnType = "KEY")]
+				public int Id{get;set;}        
+				public string Code{get;set;}        
+				public string MType{get;set;}        
+				public string SName{get;set;}        
+				public string RealName{get;set;}        
+				public string FileTitle{get;set;}        
+				public DateTime UploadTime{get;set;}        
+				public int Company{get;set;}        
+				public bool IsDeleted{get;set;}        
+				public DateTime CreatedTime{get;set;}        
+				public string CreatedBy{get;set;}        
+				public DateTime LastUpdateTime{get;set;}        
+				public string LastUpdateBy{get;set;}        
+				public int Status{get;set;}        
+				public string Remark{get;set;}        
+		   
+	}
+}
+

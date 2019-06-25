@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteNoFooter.master.cs" Inherits="Web.m.app.SiteNoFooter" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title><%=Service.CacheService.GlobleConfig.Contacter %></title>
+     <link rel="stylesheet" type="text/css" href="../../common/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/m.css" />
+    <script src="/common/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/common/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/common/layer.mobile-v2.0/layer_mobile/layer.js"></script>
+    <script src="/common/js/jquery.cookie.js"></script>
+    <script src="/common/js/common.js"></script>
+     <script src="/common/js/Verification.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container-fluid">
+          <%if (Service.GlobleConfigService.GetWebConfig("IsShowMainNav").Value == "1")//显示导航栏
+                  { %>
+        <div class="navbar navbar-fixed-top header text-center nav-head-height">
+            <a href="javascript:window.history.go(-1);" class="history"></a>
+            <h5 id="h5_title">用户登录
+            </h5>
+        </div>
+        <div class="nav-head-height"></div>
+          <%}%>
+        <form id="form1">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" ClientIDMode="Static">
+            </asp:ContentPlaceHolder>
+        </form>
+    </div>
+    <asp:ContentPlaceHolder ID="FooterPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

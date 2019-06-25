@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5109935-E15E-4FF4-AC82-B0D330698BFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonWeb\code\LIB\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\LIB\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\yijing\code\LIB\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonWeb\code\LIB\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonWeb\code\LIB\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonWeb\code\LIB\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonWeb\code\LIB\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressService.cs" />
+    <Compile Include="AliPay\AlipayConfig.cs" />
+    <Compile Include="AliPay\AlipayCore.cs" />
+    <Compile Include="AliPay\AlipayNotify.cs" />
+    <Compile Include="AliPay\AlipaySubmit.cs" />
+    <Compile Include="AliPay\MD5.cs" />
+    <Compile Include="CacheService.cs" />
+    <Compile Include="DictService.cs" />
+    <Compile Include="GlobleConfigService.cs" />
+    <Compile Include="LogService.cs" />
+    <Compile Include="MemberService.cs" />
+    <Compile Include="MessageService.cs" />
+    <Compile Include="NpoiService.cs" />
+    <Compile Include="PayService.cs" />
+    <Compile Include="PlanService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SHMoneyServiceVRank.cs" />
+    <Compile Include="SHMoneyServiceVEC.cs" />
+    <Compile Include="SHMoneyService.cs" />
+    <Compile Include="SignUpService.cs" />
+    <Compile Include="TelephoneCodeService.cs" />
+    <Compile Include="WebRemoteRequest.cs" />
+    <Compile Include="WXPay\business\DownloadBill.cs" />
+    <Compile Include="WXPay\business\JsApiPay.cs" />
+    <Compile Include="WXPay\business\MicroPay.cs" />
+    <Compile Include="WXPay\business\NativeNotify.cs" />
+    <Compile Include="WXPay\business\NativePay.cs" />
+    <Compile Include="WXPay\business\OAuthUser.cs" />
+    <Compile Include="WXPay\business\OrderQuery.cs" />
+    <Compile Include="WXPay\business\Refund.cs" />
+    <Compile Include="WXPay\business\RefundQuery.cs" />
+    <Compile Include="WXPay\business\ResultNotify.cs" />
+    <Compile Include="WXPay\business\WeixinUser.cs" />
+    <Compile Include="WXPay\business\WeixinShare.cs" />
+    <Compile Include="WXPay\lib\Config.cs" />
+    <Compile Include="WXPay\lib\Data.cs" />
+    <Compile Include="WXPay\lib\Exception.cs" />
+    <Compile Include="WXPay\lib\HttpService.cs" />
+    <Compile Include="WXPay\lib\Log.cs" />
+    <Compile Include="WXPay\lib\Notify.cs" />
+    <Compile Include="WXPay\lib\WxPayApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonWeb\code\DBUtility\DBUtility.csproj">
+      <Project>{9fc8c500-3117-4942-bc0e-cf734e202716}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CommonWeb\code\MethodHelper\MethodHelper.csproj">
+      <Project>{f58ceb08-ded4-4076-ab70-0b635700728c}</Project>
+      <Name>MethodHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{14109fc3-779f-4a7f-8112-d7c8cdd075b4}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
